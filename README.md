@@ -54,7 +54,7 @@ MIRROR 在 **14 个主流 AIGI 基准数据集** 上均展现出卓越的检测�
 - [x] **推理代码开源**：提供完整推理脚本与配置。  
 - [x] **模型权重发布**：提供基于 **DINOv3-H+** 的推理权重。  
 - [ ] **训练流程开源**：训练代码以及剩余权重将在后续版本发布。
-
+- [ ] **难样本基准**：**Human-AIGI Benchmark** 将在后续版本发布。
 ---
 
 ## 🚀 快速开始
@@ -78,16 +78,26 @@ pip install torch torchvision tqdm pillow numpy scikit-learn transformers peft
 
 ### 2️⃣ 权重准备
 
-请确保您的 `weight` 目录下包含以下文件结构：
+请确保您的 `weight` 目录下包含以下文件结构。  
+其中 **模型检查点** 与 **Memory Bank 权重** 可从下述链接下载：
+
+- **`checkpoint-h-cur.pth`**（Phase 2 训练后的模型检查点）  
+  👉 下载地址：  
+  **https://drive.google.com/file/d/1gos1QgZA4Xuj706oa5i5E6vsOAoaLyr3/view?usp=sharing**
+
+- **`mirror_phase1.pth`**（Phase 1 的 Memory Bank 权重）  
+  👉 下载地址：  
+  **https://drive.google.com/file/d/1CpgltI-F7JN7hDyk2O16Ix3Zr_2d2-G0/view?usp=sharing**
+
+> 📌 请将下载后的文件放置到项目根目录下的 `weight/` 文件夹中。
 
 ```text
 weight/
-├── checkpoint-h-cur.pth  # Phase 2 训练后的模型检查点
-├── mirror_phase1.pth     # Phase 1 的 Memory Bank 权重
-└── dinov3-huge/          # 本地 DINOv3 骨干模型权重目录
-     ├── config.json  # DINOv3-Huge 配置文件
-     ├── model.safetensors    # DINOv3-Huge 预训练权重
-
+├── checkpoint-h-cur.pth      # Phase 2 训练后的模型检查点
+├── mirror_phase1.pth         # Phase 1 的 Memory Bank 权重
+└── dinov3-huge/              # 本地 DINOv3-Huge 骨干模型权重目录
+    ├── config.json           # DINOv3-Huge 配置文件
+    └── model.safetensors     # DINOv3-Huge 预训练权重
 ```
 
 ### 3️⃣ 一键推理
@@ -161,7 +171,7 @@ base_data_path/
 
 ## 📧 联系与贡献
 
-* **反馈**：欢迎通过 [Issues](https://www.google.com/search?q=https://github.com/YourUsername/MIRROR/issues) 提交 Bug 或改进建议。
+* **反馈**：欢迎通过 [Issues](https://github.com/349793927/MIRROR/issues) 提交 Bug 或改进建议。
 * **联系**：ruiqi.liu24@nlpr.ia.ac.cn。
 
 ---
