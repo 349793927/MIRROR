@@ -25,7 +25,7 @@ MIRROR 在 **14 个主流 AIGI 基准数据集** 上均展现出卓越的检测�
 
 ### 不同 Backbone 下的 Benchmark 对比（Balanced Accuracy, %）
 
-| 类别 | Benchmark | SOTA 基线 (B.Acc) | DINOv2-L | DINOv3-L | **DINOv3-H+（最强）** | 相对 SOTA 提升 |
+| 类别 | Benchmark | SOTA 基线 | MIRROR (DINOv2-L) | MIRROR (DINOv3-L) | **MIRROR (DINOv3-H+)** | 相对 SOTA 提升 |
 |---------|-----------|-------------------|----------|----------|---------------------------|----------------|
 | **标准基准** | AIGCDetectBenchmark | 84.7 (B-Free) | 90.5 | 91.7 | **97.3** | **+12.6** |
 | | GenImage | 89.6 (B-Free) | 91.3 | 94.2 | **99.8** | **+10.2** |
@@ -43,7 +43,7 @@ MIRROR 在 **14 个主流 AIGI 基准数据集** 上均展现出卓越的检测�
 
 **说明：**
 - 所有数据集均已 **格式对齐（PNG -> JPG）** 处理。  
-- 所有结果均以 **平衡准确率（Balanced Accuracy, %）** 报告。  
+- 所有结果均以 **平衡准确率（Balanced Accuracy %）** 报告。  
 - MIRROR 在三种 Backbone 下进行评估：**DINOv2-L、DINOv3-L、DINOv3-H+**。  
 - 随着 Backbone 能力增强，整体性能稳定提升；同时 MIRROR 在 **野外场景** 中始终保持显著优势，体现了良好的泛化性与鲁棒性。
 
