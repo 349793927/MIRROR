@@ -65,7 +65,7 @@ MIRROR 在 **14 个主流 AIGI 基准数据集** 上均展现出卓越的检测�
 
 ```bash
 # 克隆仓库
-git clone https://github.com/YourUsername/MIRROR.git
+git clone https://github.com/349793927/MIRROR.git
 cd MIRROR
 
 # 安装基础依赖
