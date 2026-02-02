@@ -234,7 +234,7 @@ class MIRROR_Detector(nn.Module):
         
         return logits, f_recon, feat_tokens
 
-def build_mirror(memory_path='/data/liurq_data/outputs/mirror/mirror_phase1/mirror_phase1_epoch_2.pth', backbone_path='/data/liurq_data/weights/dinov3-huge'):
+def build_mirror(memory_path='', backbone_path=''):
     # Determine dimension based on backbone name or config
     if 'large' in backbone_path:
         dim = 1024

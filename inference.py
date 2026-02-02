@@ -245,10 +245,10 @@ def evaluate(data_loader, model, device, use_amp=False):
 
 def get_args():
     parser = argparse.ArgumentParser('MIRROR Multi-Benchmark Inference')
-    parser.add_argument('--model_path', default="/data/liurq_data/outputs/mirror/mirror_phase2/checkpoint-h-cur.pth", type=str)
-    parser.add_argument('--memory_path', default='/data/liurq_data/outputs/mirror/mirror_phase1/mirror_phase1_epoch_2.pth', type=str)
-    parser.add_argument('--backbone_path', default='/data/liurq_data/weights/dinov3-huge', type=str)
-    parser.add_argument('--base_data_path', default='/data/liurq_data/sid_data', type=str)
+    parser.add_argument('--model_path', default="D:\\MIND\\weight\\checkpoint-h-cur.pth", type=str)
+    parser.add_argument('--memory_path', default='D:\\MIND\\weight\\mirror_phase1.pth', type=str)
+    parser.add_argument('--backbone_path', default='D:\\MIND\\weight\\dinov3-huge', type=str)
+    parser.add_argument('--base_data_path', default='D:\\sid_data', type=str)
     parser.add_argument('--benchmarks', nargs='+', default=['Chameleon'], help='List of benchmarks')
     parser.add_argument('--output_dir', default='./results', type=str)
     parser.add_argument('--batch_size', default=128, type=int)
