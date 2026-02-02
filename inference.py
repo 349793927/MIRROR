@@ -165,7 +165,7 @@ class TestDataset(Dataset):
 # ============================
 
 DATASET_CONFIGS = {
-    'AIGCDetect': ["sd_xl", "progan", "stylegan", "biggan", "cyclegan", "stargan", "gaugan", "stylegan2", "whichfaceisreal", "ADM", "Glide", "Midjourney", "stable_diffusion_v_1_4", "stable_diffusion_v_1_5", "VQDM", "wukong", "DALLE2"],
+    'AIGCDetectBenchmark': ["sd_xl", "progan", "stylegan", "biggan", "cyclegan", "stargan", "gaugan", "stylegan2", "whichfaceisreal", "ADM", "Glide", "Midjourney", "stable_diffusion_v_1_4", "stable_diffusion_v_1_5", "VQDM", "wukong", "DALLE2"],
     'Genimage': ["Midjourney", "stable_diffusion_v_1_4", "stable_diffusion_v_1_5", "ADM", "Glide", "wukong", "VQDM", "biggan2"],
     'ojha': ["deepfake", "san", "crn", "imle", "guided", "ldm_100", "ldm_200", "ldm_200_cfg", "glide_50_27", "glide_100_10", "glide_100_27", "dalle"],
     'WildRF': ["facebook", "reddit", "twitter"],
@@ -186,7 +186,7 @@ BENCHMARK_PATHS = {
     'AIGI-Human-hard': 'aigi_human',
     'AIGI-Human-orig': 'human_aigi_orig',
     'AIGI-Now': 'AIGI-Now',
-    'AIGCDetect': 'AIGC_bm',
+    'AIGCDetectBenchmark': 'AIGC_bm',
     'Synthwildx': 'synthwildx',
     'WildRF': 'WildRF/test',
     'Chameleon': 'Chameleon/test',
