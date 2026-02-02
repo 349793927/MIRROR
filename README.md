@@ -1,7 +1,7 @@
 
 ---
 
-# 🪞 MIRROR: Memory-Induced Reference-REconstruction for Robust AIGI Detection
+# 🪞 MIRROR: Manifold Ideal Reference ReconstructOR for Generalizable AI-Generated Image Detection
 
 **MIRROR** 是一种专为 AI 生成图像（AIGI）检测设计的创新框架。不同于传统的二分类方法，MIRROR 另辟蹊径：它通过在冻结的**现实先验存储库（Memory Bank）**中重建理想的“现实参考”，并分析原始图像特征与重建特征之间的微小差异，从而锁定 AI 生成内容的蛛丝马迹。
 
@@ -9,10 +9,9 @@
 
 ## ✨ 核心亮点
 
-* **🏆 SOTA 性能**：在 AIGCDetect, Genimage, UnivFD, RealChain 等14主流基准测试中刷新纪录。
-* **🛡️ 极致鲁棒性**：针对“野外（In-the-Wild）”复杂场景进行了深度优化，有效抵御各种常见图像扰动。
+* **🏆 SOTA 性能**：在 AIGCDetect, Genimage, UnivFD, Chameleon 等14主流基准测试中刷新纪录。
 * **🧠 强大底座**：采用 **DINOv3** 作为特征提取器，并结合 **LoRA** 策略进行高效微调，兼顾表达力与训练效率。
-* **⚖️ 双重决策逻辑**：通过计算重建图像的 **Perplexity（困惑度）** 与 **Residual（残差）** 进行最终判定，实现高精度识别。
+* **⚖️ 双重决策逻辑**：通过计算重建特征图的 **Perplexity（困惑度）** 与 **Residual（残差）** 进行最终判定，实现高精度识别。
 
 ---
 
@@ -22,59 +21,31 @@ MIRROR 在 **14 个主流 AIGI 基准数据集**上均展现了卓越的检测�
 
 下表展示了 MIRROR (基于 DINOv3) 与当前主流方法（如 DDA, B-Free, UnivFD 等）的 **Balanced Accuracy (B.Acc)** 对比结果：
 
-| 类型 | Benchmark | SOTA Baseline (B.Acc) | **MIRROR (Ours)** | 提升 (Gain) |
-| --- | --- | --- | --- | --- |
-| **标准基准** <br>
+### Benchmark Comparison with Different Backbones (Balanced Accuracy, %)
 
-<br> *(Standard)* | **AIGCDetect** | 90.3 (DDA) | **94.0** | <font color="green">+3.7</font> 
+| Category | Benchmark | SOTA Baseline (B.Acc) | DINOv2-L | DINOv3-L | **DINOv3-H+ (Ours)** | Gain vs SOTA |
+|---------|-----------|-----------------------|----------|----------|---------------------|--------------|
+| **Standard** | AIGCDetect | 90.3 (DDA) | 92.1 | 93.2 | **94.0** | **+3.7** |
+| | GenImage | 88.9 (DDA) | 93.4 | 95.1 | **96.7** | **+7.8** |
+| | UnivFakeDetect | 87.8 (DDA) | 95.6 | 97.4 | **98.6** | **+10.8** |
+| | Synthbuster | 91.8 (DDA) | 92.6 | 93.3 | **94.0** | **+2.2** |
+| | EvalGEN | 90.4 (DDA) | 91.9 | 92.8 | **93.9** | **+3.5** |
+| | DRCT-2M | 99.2 (DDA) | 98.7 | 98.9 | **99.0** | −0.2 |
+| **In-the-Wild** | Chameleon | 83.5 (B-Free) | 87.4 | 89.1 | **90.7** | **+7.2** |
+| | SynthWildx | 86.1 (DDA) | 88.9 | 90.2 | **91.2** | **+5.1** |
+| | WildRF | 91.1 (DDA) | 93.2 | 94.6 | **95.9** | **+4.8** |
+| | AIGIBench | 89.5 (DDA) | 92.1 | 93.6 | **94.9** | **+5.4** |
+| | CO-SPY | 93.8 (DDA) | 95.2 | 96.4 | **97.1** | **+3.3** |
+| | RR-Dataset | 72.5 (DDA) | 75.6 | 77.1 | **78.9** | **+6.4** |
+| | BFree-Online | 84.3 (DDA) | 88.2 | 89.9 | **91.2** | **+6.9** |
+| **Challenging** | Human-AIGI | 88.1 (DDA) | 88.7 | 89.1 | **89.6** | **+1.5** |
 
- |
-|  | **GenImage** | 88.9 (DDA) | **96.7** | <font color="green">+7.8</font> 
 
- |
-|  | **UnivFakeDetect** | 87.8 (DDA) | **98.6** | <font color="green">+10.8</font> 
+**Note:**  
+- All results are reported in **Balanced Accuracy (%)**.  
+- MIRROR is evaluated with three different backbones: **DINOv2-Large**, **DINOv3-Large**, and **DINOv3-H+**.  
+- Performance consistently improves with stronger backbones, while MIRROR maintains robust gains across all benchmarks, especially in **In-the-Wild** and **challenging** scenarios.
 
- |
-|  | **Synthbuster** | 91.8 (DDA) | **94.0** | <font color="green">+2.2</font> 
-
- |
-|  | **EvalGEN** | 90.4 (DDA) | **93.9** | <font color="green">+3.5</font> 
-
- |
-|  | **DRCT-2M** | 99.2 (DDA) | **99.0** | <font color="gray">-0.2</font> 
-
- |
-| **野外场景** <br>
-
-<br> *(In-the-Wild)* | **Chameleon** | 83.5 (B-Free) | **90.7** | <font color="green">+7.2</font> 
-
- |
-|  | **SynthWildx** | 86.1 (DDA) | **91.2** | <font color="green">+5.1</font> 
-
- |
-|  | **WildRF** | 91.1 (DDA) | **95.9** | <font color="green">+4.8</font> 
-
- |
-|  | **AIGIBench** | 89.5 (DDA) | **94.9** | <font color="green">+5.4</font> 
-
- |
-|  | **CO-SPY** | 93.8 (DDA) | **97.1** | <font color="green">+3.3</font> 
-
- |
-|  | **RR-Dataset** | 72.5 (DDA) | **78.9** | <font color="green">+6.4</font> 
-
- |
-|  | **BFree-Online** | 84.3 (DDA) | **91.2** | <font color="green">+6.9</font> 
-
- |
-| **高难挑战** | **Human-AIGI** | 88.1 (DDA) | **89.6** | <font color="green">+1.5</font> 
-
- |
-
-> **数据说明**：
-> * 所有数据均基于 **DINOv3-Large/Huge** 骨干网络测试 。
-> * **SOTA Baseline** 选取了各数据集上表现最好的对比方法（主要为 DDA 或 B-Free ）。
-> * **Human-AIGI** 是本项目提出的高难度基准，包含大量人类难以分辨的生成图像 。
 
 
 ---
