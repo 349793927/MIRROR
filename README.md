@@ -1,7 +1,7 @@
 
 ---
 
-# 🪞 MIRROR：Manifold Ideal Reference ReconstructOR for Generalizable AI-Generated Image Detection  
+# 🪞 MIRROR: Manifold Ideal Reference ReconstructOR  
 **用于通用 AI 生成图像检测的流形理想参考重建器**
 
 **MIRROR** 是一种专为 **AI 生成图像（AIGI）检测** 设计的创新框架。不同于传统的二分类检测范式，MIRROR 采用了一条全新的思路：  
@@ -11,7 +11,7 @@
 
 ## ✨ 核心亮点
 
-- **🏆 SOTA 性能**：在 **AIGCDetect、Genimage、UnivFD、Chameleon** 等 **14 个主流基准测试** 上刷新或匹配当前最优结果。  
+- **🏆 SOTA 性能**：在 **AIGCDetect、Genimage、UnivFD、Chameleon** 等 **14 个主流基准测试** 上刷新当前最优结果。  
 - **🧠 强大模型底座**：采用 **DINOv3** 作为特征提取器，并结合 **LoRA** 策略进行高效微调，在性能与训练效率之间取得良好平衡。  
 - **⚖️ 双重决策机制**：基于重建特征图的 **Perplexity（困惑度）** 与 **Residual（残差）** 进行联合判定，实现稳定且高精度的检测。
 
@@ -110,7 +110,7 @@ python inference.py \
 ### 4️⃣ 推理数据集结构说明
 
 MIRROR 的推理脚本支持 **多基准（Benchmark）+ 多子数据集（Sub-dataset）** 的自动评估。  
----
+
 
 #### 📁 总体结构
 
@@ -133,6 +133,7 @@ base_data_path/
 ├── RRDataset/
 └── B-Free/
 
+```
 ---
 
 ## ⚙️ 参数详析
