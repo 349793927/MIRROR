@@ -7,6 +7,10 @@
 **MIRROR** 是一种专为 **AI 生成图像（AIGI）检测** 设计的创新框架。不同于传统的二分类检测范式，MIRROR 采用了一条全新的思路：  
 通过在**冻结的现实先验存储库（Memory Bank）**中重建理想的“真实参考”，并分析**原始图像特征**与**重建特征**之间的细微差异，从而精准捕捉 AI 生成内容所留下的隐蔽痕迹。
 
+<p align="center">
+  <img src="fig/intro2_01.png" width="95%">
+</p>
+
 ---
 
 ## ✨ 核心亮点
@@ -23,7 +27,7 @@ MIRROR 在 **14 个主流 AIGI 基准数据集** 上均展现出卓越的检测�
 
 下表给出了 MIRROR（基于不同 DINO Backbone）与当前主流方法（如 **DDA、B-Free、UnivFD** 等）的 **平衡准确率（Balanced Accuracy, B.Acc）** 对比结果：
 
-### 不同 Backbone 下的 Benchmark 对比（Balanced Accuracy, %）
+### 不同 Backbone 下的 Benchmark 对比（Balanced Accuracy %）
 
 | 类别 | Benchmark | SOTA 基线 | MIRROR (DINOv2-L) | MIRROR (DINOv3-L) | **MIRROR (DINOv3-H+)** | 相对 SOTA 提升 |
 |---------|-----------|-------------------|----------|----------|---------------------------|----------------|
