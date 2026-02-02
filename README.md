@@ -1,67 +1,67 @@
 
 ---
 
-# 🪞 MIRROR: Manifold Ideal Reference ReconstructOR for Generalizable AI-Generated Image Detection
+# 🪞 MIRROR：用于通用 AI 生成图像检测的流形理想参考重建器  
+**Manifold Ideal Reference ReconstructOR for Generalizable AI-Generated Image Detection**
 
-**MIRROR** 是一种专为 AI 生成图像（AIGI）检测设计的创新框架。不同于传统的二分类方法，MIRROR 另辟蹊径：它通过在冻结的**现实先验存储库（Memory Bank）**中重建理想的“现实参考”，并分析原始图像特征与重建特征之间的微小差异，从而锁定 AI 生成内容的蛛丝马迹。
+**MIRROR** 是一种专为 **AI 生成图像（AIGI）检测** 设计的创新框架。不同于传统的二分类检测范式，MIRROR 采用了一条全新的思路：  
+通过在**冻结的现实先验存储库（Memory Bank）**中重建理想的“真实参考”，并分析**原始图像特征**与**重建特征**之间的细微差异，从而精准捕捉 AI 生成内容所留下的隐蔽痕迹。
 
 ---
 
 ## ✨ 核心亮点
 
-* **🏆 SOTA 性能**：在 AIGCDetect, Genimage, UnivFD, Chameleon 等14主流基准测试中刷新纪录。
-* **🧠 强大底座**：采用 **DINOv3** 作为特征提取器，并结合 **LoRA** 策略进行高效微调，兼顾表达力与训练效率。
-* **⚖️ 双重决策逻辑**：通过计算重建特征图的 **Perplexity（困惑度）** 与 **Residual（残差）** 进行最终判定，实现高精度识别。
+- **🏆 SOTA 性能**：在 **AIGCDetect、Genimage、UnivFD、Chameleon** 等 **14 个主流基准测试** 上刷新或匹配当前最优结果。  
+- **🧠 强大模型底座**：采用 **DINOv3** 作为特征提取器，并结合 **LoRA** 策略进行高效微调，在性能与训练效率之间取得良好平衡。  
+- **⚖️ 双重决策机制**：基于重建特征图的 **Perplexity（困惑度）** 与 **Residual（残差）** 进行联合判定，实现稳定且高精度的检测。
 
 ---
 
-## 📈 性能表现 (Performance Comparison)
+## 📈 性能表现（Performance Comparison）
 
-MIRROR 在 **14 个主流 AIGI 基准数据集**上均展现了卓越的检测能力，特别是在高难度的“野外（In-the-Wild）”场景下，相比现有最先进方法（SOTA）实现了显著的性能飞跃 。
+MIRROR 在 **14 个主流 AIGI 基准数据集** 上均展现出卓越的检测能力，尤其是在高难度的 **In-the-Wild（真实野外）** 场景中，相比现有最先进方法（SOTA）取得了显著的性能提升。
 
-下表展示了 MIRROR (基于 DINOv3) 与当前主流方法（如 DDA, B-Free, UnivFD 等）的 **Balanced Accuracy (B.Acc)** 对比结果：
+下表给出了 MIRROR（基于不同 DINO Backbone）与当前主流方法（如 **DDA、B-Free、UnivFD** 等）的 **平衡准确率（Balanced Accuracy, B.Acc）** 对比结果：
 
-### Benchmark Comparison with Different Backbones (Balanced Accuracy, %)
+### 不同 Backbone 下的 Benchmark 对比（Balanced Accuracy, %）
 
-| Category | Benchmark | SOTA Baseline (B.Acc) | DINOv2-L | DINOv3-L | **DINOv3-H+ (Ours)** | Gain vs SOTA |
-|---------|-----------|-----------------------|----------|----------|---------------------|--------------|
-| **Standard** | AIGCDetect | 90.3 (DDA) | 92.1 | 93.2 | **94.0** | **+3.7** |
+| 类别 | Benchmark | SOTA 基线 (B.Acc) | DINOv2-L | DINOv3-L | **DINOv3-H+（最强）** | 相对 SOTA 提升 |
+|---------|-----------|-------------------|----------|----------|---------------------------|----------------|
+| **标准基准** | AIGCDetect | 90.3 (DDA) | 92.1 | 93.2 | **94.0** | **+3.7** |
 | | GenImage | 88.9 (DDA) | 93.4 | 95.1 | **96.7** | **+7.8** |
 | | UnivFakeDetect | 87.8 (DDA) | 95.6 | 97.4 | **98.6** | **+10.8** |
 | | Synthbuster | 91.8 (DDA) | 92.6 | 93.3 | **94.0** | **+2.2** |
 | | EvalGEN | 90.4 (DDA) | 91.9 | 92.8 | **93.9** | **+3.5** |
 | | DRCT-2M | 99.2 (DDA) | 98.7 | 98.9 | **99.0** | −0.2 |
-| **In-the-Wild** | Chameleon | 83.5 (B-Free) | 87.4 | 89.1 | **90.7** | **+7.2** |
+| **野外场景** | Chameleon | 83.5 (B-Free) | 87.4 | 89.1 | **90.7** | **+7.2** |
 | | SynthWildx | 86.1 (DDA) | 88.9 | 90.2 | **91.2** | **+5.1** |
 | | WildRF | 91.1 (DDA) | 93.2 | 94.6 | **95.9** | **+4.8** |
 | | AIGIBench | 89.5 (DDA) | 92.1 | 93.6 | **94.9** | **+5.4** |
 | | CO-SPY | 93.8 (DDA) | 95.2 | 96.4 | **97.1** | **+3.3** |
 | | RR-Dataset | 72.5 (DDA) | 75.6 | 77.1 | **78.9** | **+6.4** |
 | | BFree-Online | 84.3 (DDA) | 88.2 | 89.9 | **91.2** | **+6.9** |
-| **Challenging** | Human-AIGI | 88.1 (DDA) | 88.7 | 89.1 | **89.6** | **+1.5** |
+| **高难挑战** | Human-AIGI | 88.1 (DDA) | 88.7 | 89.1 | **89.6** | **+1.5** |
 
-
-**Note:**  
-- All results are reported in **Balanced Accuracy (%)**.  
-- MIRROR is evaluated with three different backbones: **DINOv2-Large**, **DINOv3-Large**, and **DINOv3-H+**.  
-- Performance consistently improves with stronger backbones, while MIRROR maintains robust gains across all benchmarks, especially in **In-the-Wild** and **challenging** scenarios.
-
-
+**说明：**
+- 所有结果均以 **平衡准确率（Balanced Accuracy, %）** 报告。  
+- MIRROR 在三种 Backbone 下进行评估：**DINOv2-L、DINOv3-L、DINOv3-H+**。  
+- 随着 Backbone 能力增强，整体性能稳定提升；同时 MIRROR 在 **野外场景** 与 **高难挑战任务** 中始终保持显著优势，体现了良好的泛化性与鲁棒性。
 
 ---
+
 ## 🛠️ 项目进度
 
-* [x] **推理代码开源**：包含 DINOv3-Huge 推理脚本与完整配置。
-* [ ] **模型权重发布**：MIND/REM 阶段权重正在进行合规审查，即将公开。
-* [ ] **训练全量开源**：训练代码与数据集预处理流程后续发布。
+- [x] **推理代码开源**：提供基于 **DINOv3-Huge** 的完整推理脚本与配置。  
+- [ ] **模型权重发布**：MIND / REM 阶段权重正在进行合规审查，即将公开。  
+- [ ] **训练流程全量开源**：训练代码与数据集预处理流程将在后续版本发布。
 
 ---
 
 ## 🚀 快速开始
 
-### 1. 环境配置
+### 1️⃣ 环境配置
 
-推荐使用 Python 3.10 及以上版本。
+推荐使用 **Python 3.10+**。
 
 ```bash
 # 克隆仓库
@@ -70,6 +70,7 @@ cd MIRROR
 
 # 安装基础依赖
 pip install torch torchvision tqdm pillow numpy scikit-learn transformers peft
+
 
 ```
 
@@ -84,6 +85,8 @@ weight/
 ├── checkpoint-h-cur.pth  # Phase 2 训练后的模型检查点
 ├── mirror_phase1.pth     # Phase 1 的 Memory Bank 权重
 └── dinov3-huge/          # 本地 DINOv3 骨干模型权重目录
+     ├── config.json  # DINOv3-Huge 配置文件
+     ├── model.safetensors    # DINOv3-Huge 预训练权重
 
 ```
 
@@ -139,8 +142,7 @@ python inference.py \
 ## 📧 联系与贡献
 
 * **反馈**：欢迎通过 [Issues](https://www.google.com/search?q=https://github.com/YourUsername/MIRROR/issues) 提交 Bug 或改进建议。
-* **贡献**：如果您想改进算法，欢迎提交 Pull Request。
-* **联系**：作者联系方式由于合规原因暂未公开，敬请期待。
+* **联系**：ruiqi.liu24@nlpr.ia.ac.cn。
 
 ---
 
