@@ -3,7 +3,6 @@
 
 # 🪞 MIRROR: Manifold Ideal Reference ReconstructOR  
 **用于通用 AI 生成图像检测的流形理想参考重建器**
-
 <a href="http://arxiv.org/abs/2602.02222"
    target="_blank"
    style="
@@ -15,9 +14,8 @@
      text-decoration:none;
      font-weight:600;
    ">
-  📄 Read on arXiv
+  📄 Paper (arXiv)
 </a>
-
 
 **MIRROR** 是一种专为 **AI 生成图像（AIGI）检测** 设计的创新框架。不同于传统的二分类检测范式，MIRROR 采用了一条全新的思路：  
 通过在**冻结的现实先验存储库（Memory Bank）**中重建理想的“真实参考”，并分析**原始图像特征**与**重建特征**之间的细微差异，从而精准捕捉 AI 生成内容所留下的隐蔽痕迹。
