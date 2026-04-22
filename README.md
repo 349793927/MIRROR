@@ -35,7 +35,7 @@ This shift unlocks two properties that prior detectors lack:
 ## 📰 News
 
 - **2026.04** &nbsp;Inference code and DINOv3-H+ weights released.
-- **2026.03** &nbsp;Paper submitted to ICML 2026.
+- **2026.03** &nbsp;Paper released on arXiv.
 - **Coming soon** &nbsp;Training code, full checkpoint zoo, and the Human-AIGI Benchmark.
 
 ---
@@ -213,11 +213,11 @@ CSV reports land at `results/{benchmark}_{timestamp}.csv` with `Acc`, `Bal_Acc`,
 If MIRROR helps your research, please cite:
 
 ```bibtex
-@inproceedings{mirror2026,
-  title     = {MIRROR: Manifold Ideal Reference ReconstructOR for Generalizable AI-Generated Image Detection},
-  author    = {Anonymous},
-  booktitle = {Submitted to ICML},
-  year      = {2026}
+@article{liu2026mirror,
+  title   = {MIRROR: Manifold Ideal Reference ReconstructOR for Generalizable AI-Generated Image Detection},
+  author  = {Liu, Ruiqi and Cui, Manni and Qin, Ziheng and Yan, Zhiyuan and Chen, Ruoxin and Han, Yi and Li, Zhiheng and Chen, Junkai and Chen, ZhiJin and Lin, Kaiqing and others},
+  journal = {arXiv preprint arXiv:2602.02222},
+  year    = {2026}
 }
 ```
 

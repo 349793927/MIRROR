@@ -35,7 +35,7 @@
 ## 📰 项目动态
 
 - **2026.04** &nbsp;开源推理代码与 DINOv3-H+ 权重。
-- **2026.03** &nbsp;论文投稿至 ICML 2026。
+- **2026.03** &nbsp;论文发布于 arXiv。
 - **即将发布** &nbsp;训练代码、完整 checkpoint zoo、Human-AIGI Benchmark 数据集。
 
 ---
@@ -213,11 +213,11 @@ CSV 报告路径为 `results/{benchmark}_{timestamp}.csv`，包含 `Acc / Bal_Ac
 如果 MIRROR 对你的研究有帮助，欢迎引用：
 
 ```bibtex
-@inproceedings{mirror2026,
-  title     = {MIRROR: Manifold Ideal Reference ReconstructOR for Generalizable AI-Generated Image Detection},
-  author    = {Anonymous},
-  booktitle = {Submitted to ICML},
-  year      = {2026}
+@article{liu2026mirror,
+  title   = {MIRROR: Manifold Ideal Reference ReconstructOR for Generalizable AI-Generated Image Detection},
+  author  = {Liu, Ruiqi and Cui, Manni and Qin, Ziheng and Yan, Zhiyuan and Chen, Ruoxin and Han, Yi and Li, Zhiheng and Chen, Junkai and Chen, ZhiJin and Lin, Kaiqing and others},
+  journal = {arXiv preprint arXiv:2602.02222},
+  year    = {2026}
 }
 ```
 
